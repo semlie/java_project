@@ -5,7 +5,6 @@
  */
 package Treatments;
 
-import DataAccessObject.Backend_DAO_List_impl;
 
 import java.util.ArrayList;
 import java.util.Date;
