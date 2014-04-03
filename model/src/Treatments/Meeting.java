@@ -6,6 +6,7 @@
 
 package Treatments;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -16,11 +17,21 @@ public class Meeting {
     private Patient patient;
     private Boolean payed;
     private Services service;
+    private Date date;
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
 
     public Meeting(Meeting m) {
      this.patient = m.getPatient();
      this.payed = m.isPayed();
      this.service=m.getService();
+     this.date=m.getDate();
     }
     
     public Boolean isPayed() {
@@ -30,9 +41,24 @@ public class Meeting {
     public void setPayed(Boolean payed) {
         this.payed = payed;
     }
+/**
+ * 
+ * @param patient
+ * @param service
+ * @param date 
+ */
+    public Meeting(Patient patient, Services service, Date date) {
+        this.patient = patient;
+        this.service = service;
+        this.date = date;
+    }
 
        
-
+/**
+ * 
+ * @param patient
+ * @param service 
+ */
     public Meeting(Patient patient, Services service) {
         this.patient = patient;
         this.service = service;
@@ -56,7 +82,9 @@ public class Meeting {
 
     @Override
     public String toString() {
-        return "Meeting{ " + "patient=" + patient + ", payed=" + payed + ", service=" + service + '}';
+        return "Meeting{" + "patient=" + patient + ", payed=" + payed + ", service=" + service + ", date=" + date + '}';
     }
+
+
     
 }
