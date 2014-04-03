@@ -79,7 +79,7 @@ public class toolsRandoData {
         for (int i = 0; i < MaxNumOfMeetingForEach; i++) {
             for (Patient p : ps) {
                 if (r.nextInt() % MaxNumOfMeetingForEach != 0) {
-                    m.add(new Meeting(p, BuildService()));
+                    m.add(new Meeting(p, BuildService(),new Date()));
                 }
             }
         }

@@ -3,8 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package guiclinic;
+
+import Treatments.Meeting;
+import Treatments.Patient;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -15,8 +20,9 @@ public class allMeetingForm extends javax.swing.JFrame {
     /**
      * Creates new form allMeetingForm
      */
-    public allMeetingForm() {
+    public allMeetingForm() throws Exception {
         initComponents();
+        initData();
     }
 
     /**
@@ -28,17 +34,70 @@ public class allMeetingForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTableAllMeeting = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("רשימת פגישות");
+
+        jTableAllMeeting.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "שם", "הטיפול", "תאריך", "שולם"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class
+            };
+            boolean[] canEdit = new boolean [] {
+                true, true, false, true
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jTableAllMeeting);
+
+        jLabel2.setText("רשימת  פגישות ");
+
+        jLabel1.setFont(new java.awt.Font("Dialog", 0, 36)); // NOI18N
+        jLabel1.setText("קליניקה רפואה שלמה ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 618, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(59, 59, 59)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 501, Short.MAX_VALUE))))
+                .addGap(58, 58, 58))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 379, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel2)
+                .addGap(46, 46, 46)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18))
         );
 
         pack();
@@ -74,11 +133,44 @@ public class allMeetingForm extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new allMeetingForm().setVisible(true);
+                try {
+                    new allMeetingForm().setVisible(true);
+                } catch (Exception ex) {
+                    Logger.getLogger(allMeetingForm.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
 
+    private void initData() throws Exception {
+        Vector<String> titCol = new Vector<String>();
+        titCol.add("שם");
+        titCol.add("הטיפול");
+        titCol.add("תאריך");
+        titCol.add("שולם");
+        Vector row;
+        Vector colData = new Vector();
+        for (Meeting p : GUIclinic.Controler.GetAllMeetings()) {
+            row = new Vector();
+            row.add(p.getPatient().getName());
+            row.add(p.getService());
+            row.add(p.getDate());
+            row.add(p.isPayed());
+            colData.add(row);
+        }
+        jTableAllMeeting.setModel(new javax.swing.table.DefaultTableModel(
+                colData,
+                titCol
+        ));
+        jTableAllMeeting.getColumnModel().getColumn(3).setCellRenderer(
+                jTableAllMeeting.getDefaultRenderer(Boolean.class));
+        jTableAllMeeting.getColumnModel().getColumn(3).setCellEditor(
+                jTableAllMeeting.getDefaultEditor(Boolean.class));
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTableAllMeeting;
     // End of variables declaration//GEN-END:variables
 }

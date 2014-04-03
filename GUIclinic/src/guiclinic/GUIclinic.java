@@ -24,7 +24,7 @@ public class GUIclinic {
         toolsRandoData t = new toolsRandoData();
         Controler.changePatient(t.addListofPatient(58));
         Controler.changeMeeting(t.addListOfMeeting(Controler.GetAllPatient(), 7));
-        Controler.changeServices(Controler.GetAllServices());
+        Controler.changeServices(t.addListOfServices(85));
 //    Controler.changeServices(t.addListOfServices(Controler.GetAllPatient(), 7));
     }
 
@@ -34,6 +34,8 @@ public class GUIclinic {
     public static void main(String[] args) throws Exception {
         // TODO code application logic here
       init();
+      enterForm MainForm = new enterForm();
+      MainForm.setVisible(true);
     }
 
 }
