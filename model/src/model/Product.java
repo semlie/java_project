@@ -16,7 +16,9 @@ public class Product{
     private String category;
     private double price;
 
-
+public enum nn{
+    aa,ss,ddd,fff,ggg,hhh
+}
     public Product() {
     }
     public Product(int id, String name, String category, double price) {
@@ -88,6 +90,14 @@ public class Product{
     public void setPrice(double price) {
         this.price = price;
     }
-    
-    
+ public static void ss(){
+     for(nn n:nn.values()){
+         System.out.println(n);
+     }
+        
+    }
+
+         
+   
+     
 }
