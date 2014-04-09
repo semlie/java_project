@@ -50,6 +50,7 @@ public class allServicesForm extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableCounseling = new javax.swing.JTable();
+        jButtonAddNewService = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -119,20 +120,27 @@ public class allServicesForm extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("יעוץ", jPanel2);
 
+        jButtonAddNewService.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jButtonAddNewService.setText("הוספת שרות חדש");
+        jButtonAddNewService.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAddNewServiceActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(59, 59, 59)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonAddNewService)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(59, 59, 59)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTabbedPane1)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(58, 58, 58))
         );
         layout.setVerticalGroup(
@@ -140,8 +148,10 @@ public class allServicesForm extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel4)
+                    .addComponent(jButtonAddNewService))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20))
@@ -149,6 +159,11 @@ public class allServicesForm extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonAddNewServiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddNewServiceActionPerformed
+        addNewServiceForm f = new addNewServiceForm();
+        f.setVisible(true);
+    }//GEN-LAST:event_jButtonAddNewServiceActionPerformed
 
     /**
      * @param args the command line arguments
@@ -188,7 +203,7 @@ public class allServicesForm extends javax.swing.JFrame {
             }
         });
     }
-
+    
     private ArrayList<Services> retServiceByType(Boolean ifCunseling) throws Exception {
         ArrayList<Services> ret = new ArrayList<>();
         for (Services s : GUIclinic.Controler.GetAllServices()) {
@@ -200,13 +215,13 @@ public class allServicesForm extends javax.swing.JFrame {
                 if (s instanceof Treatment) {
                     ret.add(new Treatment((Treatment) s));
                 }
-
+                
             }
         }
         return ret;
-
+        
     }
-
+    
     private void initData() throws Exception {
         Vector<String> titColForCounseling = new Vector<String>();
         Vector colDataForCounseling = new Vector();
@@ -216,7 +231,7 @@ public class allServicesForm extends javax.swing.JFrame {
         /*
          for Counseling col titles
          */
-
+        
         titColForCounseling.add("סוג הטיפול");
         titColForCounseling.add("מזהה");
         titColForCounseling.add("מחיר");
@@ -231,7 +246,7 @@ public class allServicesForm extends javax.swing.JFrame {
         titColForTretment.add("מחיר");
         titColForTretment.add("שם היועץ");
         //loop for Counseling date
-              
+        
         for (Object s : retServiceByType(true)) {
             // s=(Counseling)s;//cast to Counseling
             row = new Vector();
@@ -245,7 +260,7 @@ public class allServicesForm extends javax.swing.JFrame {
                 colDataForCounseling,
                 titColForCounseling
         ));
-         //loop for Tretment     
+        //loop for Tretment     
         for (Object s : retServiceByType(false)) {
             // s=(Counseling)s;//cast to Counseling
             row = new Vector();
@@ -262,6 +277,7 @@ public class allServicesForm extends javax.swing.JFrame {
         ));
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonAddNewService;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

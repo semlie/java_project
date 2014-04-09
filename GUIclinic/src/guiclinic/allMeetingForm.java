@@ -116,8 +116,13 @@ public class allMeetingForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-addNewMeetingForm f = new addNewMeetingForm();
-f.setVisible(true);
+        try {
+            addNewMeetingForm f = new addNewMeetingForm();
+
+            f.setVisible(true);
+        } catch (Exception ex) {
+            Logger.getLogger(allMeetingForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

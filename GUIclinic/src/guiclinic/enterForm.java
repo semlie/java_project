@@ -5,6 +5,9 @@
  */
 package guiclinic;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Dell
@@ -118,18 +121,30 @@ public class enterForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnMeetingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMeetingsActionPerformed
-        allMeetingForm f = new allMeetingForm();
-        f.setVisible(true);
+        try {
+            allMeetingForm f = new allMeetingForm();
+            f.setVisible(true);
+        } catch (Exception ex) {
+            Logger.getLogger(enterForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnMeetingsActionPerformed
 
     private void btnPatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPatientActionPerformed
-       allPatientsForm f = new allPatientsForm();
-        f.setVisible(true);
+        try {
+            allPatientsForm f = new allPatientsForm();
+            f.setVisible(true);
+        } catch (Exception ex) {
+            Logger.getLogger(enterForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnPatientActionPerformed
 
     private void btnServiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnServiceActionPerformed
-       allServicesForm f = new allServicesForm();
-        f.setVisible(true);
+        try {
+            allServicesForm f = new allServicesForm();
+            f.setVisible(true);
+        } catch (Exception ex) {
+            Logger.getLogger(enterForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnServiceActionPerformed
 
     private void btnReportsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportsActionPerformed
