@@ -14,6 +14,7 @@ import Treatments.Treatment;
 import com.sun.org.apache.bcel.internal.generic.INSTANCEOF;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 
 /**
  *
@@ -24,24 +25,30 @@ public class Backend_DAO_List_impl implements Backend {
     private List<Patient> _patient;
     private List<Services> _services;
     private List<Meeting> _metting;
-/**
- * for esay test get list of patiens
- * @param PL 
- */
+
+    /**
+     * for esay test get list of patiens
+     *
+     * @param PL
+     */
     public void changePatient(ArrayList<Patient> PL) {
         this._patient = PL;
     }
-/**
- * for esay test get list of Meeting
- * @param ML 
- */
+
+    /**
+     * for esay test get list of Meeting
+     *
+     * @param ML
+     */
     public void changeMeeting(ArrayList<Meeting> ML) {
         this._metting = ML;
     }
-/**
- * for esay test get list of Services;
- * @param SL 
- */
+
+    /**
+     * for esay test get list of Services;
+     *
+     * @param SL
+     */
     public void changeServices(ArrayList<Services> SL) {
         this._services = SL;
     }
@@ -211,5 +218,23 @@ public class Backend_DAO_List_impl implements Backend {
             ret += meet.getService().getPrice();
         }
         return ret;
+    }
+
+    public ArrayList<String> treatmentType() {
+        ArrayList<String> v = new ArrayList<>();
+
+        for (Object o : Treatments.Services.TypesTret.values()) {
+            v.add(o.toString());
+        }
+        return v;
+    }
+
+    public ArrayList<String> counselingType() {
+        ArrayList<String> v = new ArrayList<>();
+        for (Object o : Treatments.Services.TypesCons.values()) {
+            v.add(o.toString());
+        }
+        return v;
+
     }
 }
