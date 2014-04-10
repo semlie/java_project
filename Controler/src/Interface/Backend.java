@@ -45,5 +45,7 @@ public interface Backend {
     double CalcPatientTotalCost(Patient p)throws Exception;
     double CalcAllPatientTotalCost(ArrayList<Meeting> metting)throws Exception;
     
+    ArrayList<String> counselingType() throws Exception;
+    ArrayList<String> treatmentType() throws Exception;
     
 }

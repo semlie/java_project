@@ -220,7 +220,8 @@ public class Backend_DAO_List_impl implements Backend {
         return ret;
     }
 
-    public ArrayList<String> treatmentType() {
+    @Override
+    public ArrayList<String> treatmentType() throws Exception{
         ArrayList<String> v = new ArrayList<>();
 
         for (Object o : Treatments.Services.TypesTret.values()) {
@@ -229,7 +230,8 @@ public class Backend_DAO_List_impl implements Backend {
         return v;
     }
 
-    public ArrayList<String> counselingType() {
+    @Override
+    public ArrayList<String> counselingType() throws Exception{
         ArrayList<String> v = new ArrayList<>();
         for (Object o : Treatments.Services.TypesCons.values()) {
             v.add(o.toString());
