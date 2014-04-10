@@ -7,9 +7,15 @@ package guiclinic;
 
 import Treatments.Meeting;
 import Treatments.Patient;
+import java.awt.Point;
+import java.awt.Toolkit;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.WindowEvent;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JTable;
 
 /**
  *
@@ -120,6 +126,8 @@ public class allMeetingForm extends javax.swing.JFrame {
             addNewMeetingForm f = new addNewMeetingForm();
 
             f.setVisible(true);
+            WindowEvent wev = new WindowEvent(this, WindowEvent.WINDOW_CLOSING);
+            Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(wev);
         } catch (Exception ex) {
             Logger.getLogger(allMeetingForm.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -188,6 +196,26 @@ public class allMeetingForm extends javax.swing.JFrame {
                 jTableAllMeeting.getDefaultRenderer(Boolean.class));
         jTableAllMeeting.getColumnModel().getColumn(3).setCellEditor(
                 jTableAllMeeting.getDefaultEditor(Boolean.class));
+
+        jTableAllMeeting.addMouseListener(new MouseAdapter() {
+            public void mousePressed(MouseEvent me) {
+                JTable table = (JTable) me.getSource();
+                Point p = me.getPoint();
+                int row = table.rowAtPoint(p);
+                if (me.getClickCount() == 2) {
+                    try {
+                        editMeeting  f;
+                        f = new editMeeting(GUIclinic.Controler.GetAllMeetings().get(row));
+                        f.setVisible(true);
+                        WindowEvent wev = new WindowEvent(allMeetingForm.this, WindowEvent.WINDOW_CLOSING);
+                        Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(wev);
+                    } catch (Exception ex) {
+                        Logger.getLogger(allMeetingForm.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                     
+                }
+            }
+        });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

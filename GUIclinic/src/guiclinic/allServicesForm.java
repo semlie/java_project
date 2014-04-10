@@ -9,6 +9,8 @@ import Treatments.Counseling;
 import Treatments.Patient;
 import Treatments.Services;
 import Treatments.Treatment;
+import java.awt.Toolkit;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.Vector;
 import java.util.logging.Level;
@@ -163,6 +165,8 @@ public class allServicesForm extends javax.swing.JFrame {
     private void jButtonAddNewServiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddNewServiceActionPerformed
         addNewServiceForm f = new addNewServiceForm();
         f.setVisible(true);
+        WindowEvent wev = new WindowEvent(this, WindowEvent.WINDOW_CLOSING);
+        Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(wev);
     }//GEN-LAST:event_jButtonAddNewServiceActionPerformed
 
     /**
@@ -260,6 +264,10 @@ public class allServicesForm extends javax.swing.JFrame {
                 colDataForCounseling,
                 titColForCounseling
         ));
+        
+        jTableCounseling.getColumnModel().getColumn(1).setMaxWidth(0);
+        jTableCounseling.getColumnModel().getColumn(1).setMinWidth(0);
+        jTableCounseling.getColumnModel().getColumn(1).setPreferredWidth(0);
         //loop for Tretment     
         for (Object s : retServiceByType(false)) {
             // s=(Counseling)s;//cast to Counseling
@@ -275,6 +283,9 @@ public class allServicesForm extends javax.swing.JFrame {
                 colDataForTretment,
                 titColForTretment
         ));
+        jTableTretment.getColumnModel().getColumn(1).setMaxWidth(0);
+        jTableTretment.getColumnModel().getColumn(1).setMinWidth(0);
+        jTableTretment.getColumnModel().getColumn(1).setPreferredWidth(0);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAddNewService;

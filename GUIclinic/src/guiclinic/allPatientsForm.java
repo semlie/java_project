@@ -6,9 +6,15 @@
 package guiclinic;
 
 import Treatments.Patient;
+import java.awt.Point;
+import java.awt.Toolkit;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.WindowEvent;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JTable;
 
 /**
  *
@@ -100,6 +106,8 @@ public class allPatientsForm extends javax.swing.JFrame {
     private void jButtonAddNewpatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddNewpatientActionPerformed
         addNewPatientForm f = new addNewPatientForm();
         f.setVisible(true);// TODO add your handling code here:
+        WindowEvent wev = new WindowEvent(this, WindowEvent.WINDOW_CLOSING);
+        Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(wev);
     }//GEN-LAST:event_jButtonAddNewpatientActionPerformed
 
     /**
@@ -167,6 +175,26 @@ public class allPatientsForm extends javax.swing.JFrame {
                 colData,
                 titCol
         ));
+        
+        jTable1.addMouseListener(new MouseAdapter() {
+            public void mousePressed(MouseEvent me) {
+                JTable table = (JTable) me.getSource();
+                Point p = me.getPoint();
+                int row = table.rowAtPoint(p);
+                if (me.getClickCount() == 2) {
+                    try {
+                        editPatient  f;
+                        f = new editPatient(GUIclinic.Controler.GetAllPatient().get(row));
+                        f.setVisible(true);
+                        WindowEvent wev = new WindowEvent(allPatientsForm.this, WindowEvent.WINDOW_CLOSING);
+                        Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(wev);
+                    } catch (Exception ex) {
+                        Logger.getLogger(allMeetingForm.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                     
+                }
+            }
+        });
     }
     
 }

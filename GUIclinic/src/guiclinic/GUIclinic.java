@@ -21,9 +21,9 @@ public class GUIclinic {
 
     public static void init() throws Exception {
         toolsRandoData t = new toolsRandoData();
-        Controler.changePatient(t.addListofPatient(1));
-        Controler.changeMeeting(t.addListOfMeeting(Controler.GetAllPatient(), 1));
-        Controler.changeServices(t.addListOfServices(1));
+        Controler.changePatient(t.addListofPatient(30));
+        Controler.changeMeeting(t.addListOfMeeting(Controler.GetAllPatient(), 30));
+        Controler.changeServices(t.addListOfServices(30));
 //    Controler.changeServices(t.addListOfServices(Controler.GetAllPatient(), 7));
     }
 

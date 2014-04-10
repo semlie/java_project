@@ -8,6 +8,13 @@ package guiclinic;
 import Treatments.Treatment;
 import Treatments.Counseling;
 import Treatments.Services;
+import java.awt.Toolkit;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.awt.event.WindowEvent;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -21,8 +28,49 @@ public class addNewServiceForm extends javax.swing.JFrame {
      */
     public addNewServiceForm() {
         initComponents();
+        try {
+            init();
+        } catch (Exception ex) {
+            Logger.getLogger(addNewServiceForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
+    private void init() throws Exception{
+        Vector comboBoxItems=new Vector();
+        if (jComboBoxTypeOfService.getSelectedItem().toString().equals("יעוץ")) {
+            for(String o:GUIclinic.Controler.counselingType()){
+                comboBoxItems.add(o);
+            }
+        }
+        else {
+            for(String o:GUIclinic.Controler.treatmentType()){
+                comboBoxItems.add(o);
+            }
+        }
+            jComboBoxTypeOfCategory.setModel(new javax.swing.DefaultComboBoxModel(comboBoxItems));
+            
+            jComboBoxTypeOfService.addItemListener(new ItemListener() {
+                //
+                // Listening if a new items of the combo box has been selected.
+                //
+                @Override
+                public void itemStateChanged(ItemEvent event) {
+                    try {
+                        // The item affected by the event.
+//                Object item = event.getItem();
+                        init();
+                    } catch (Exception ex) {
+                        Logger.getLogger(addNewServiceForm.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
+                }
+            });
+            
+            jComboBoxTypeOfCategory.invalidate();
+            jComboBoxTypeOfCategory.validate();
+            jComboBoxTypeOfCategory.repaint();
+        
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -155,13 +203,22 @@ public class addNewServiceForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        //GUIclinic.Controler.GetAllPatient();
+        Services s;
         if (jComboBoxTypeOfService.getSelectedItem() == "יעוץ") {
                        // JOptionPane.showMessageDialog(null, "נבחר יעוץ");
-            Services s = new Counseling(Services.TypesCons.MESO, WIDTH, null, WIDTH, null);
-            // GUIclinic.Controler.AddPatiant(p);
+            s = new Counseling(Services.TypesCons.valueOf(jComboBoxTypeOfCategory.getSelectedItem().toString()), -1, null,  Double.parseDouble(jTextPrice.getText()), jTextNameOfAten.getText());
         } 
         else {
-        //    Services s = new Treatment(Services.TypesCons.MESO, WIDTH,null, WIDTH, null);
+            s = new Treatment(Services.TypesTret.valueOf(jComboBoxTypeOfCategory.getSelectedItem().toString()), jTextTheProblem.getText(), -1, null,  Double.parseDouble(jTextPrice.getText()), jTextNameOfAten.getText());
+        }
+        try {
+            GUIclinic.Controler.AddService(s);
+            JOptionPane.showMessageDialog(null, "השרות התווסף בהצלחה");
+            WindowEvent wev = new WindowEvent(this, WindowEvent.WINDOW_CLOSING);
+            Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(wev);
+        } catch (Exception ex) {
+            Logger.getLogger(addNewServiceForm.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
