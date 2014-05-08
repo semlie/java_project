@@ -1,20 +1,90 @@
+<div class="aform" ng-controller="formCtrl">
+    <div class="col-xs-6">
+        <form role="form" >
+            <div class="form-group misg" >
+                <label for="exampleInputEmail1">פרטים לרישום משתמש חדש</label>
+                <input type="email" name="user-email" class="form-control" id="user-email" placeholder="כתובת מייל" ng-model="user.mail">
+                <input type="text" name="user-name" class="form-control" id="user-name" placeholder="שם משתמש" ng-model="user.name">
+                <input type="password" name="user-pass" class="form-control" id="user-pass" placeholder="סיסמה" ng-model="user.pass">
+            </div>
+            <div class="form-group misg" >
+                <label for="exampleInputEmail1">פרטים אישיים</label>
+                <input type="text" name="user-pname" class="form-control" id="user-pname" placeholder="שם מלא" ng-model="user.pname">
+                <input type="text" name="user-address" class="form-control" id="user-address" placeholder="כתובת" ng-model="user.address">
+                <input type="text" name="user-phone" class="form-control" id="user-phone" placeholder="טלפון" ng-model="user.phone">
+            </div>
+            <div class="form-group misg" >
+                <label for="exampleInputEmail1">אמצעי תשלום</label>
+                <input type="text" name="card_owner" class="form-control" id="card_owner" placeholder="שם בעל הכרטיס" ng-model="user.card_owner">
+                <input type="text" name="card_number" class="form-control" id="card_number" placeholder="מספר כרטיס אשראי" ng-model="user.card_number">
+                <div>    
+                    <div class="col-md-4">      
+                        <label for="exampleInputEmail1">תוקף</label>
+                    </div>
+                    <div class="col-md-4">        
+                        <select class="form-control" name="card_expire_month" id="card_expire_month" ng-model="user.card_expire_month">
+                            <option value="01">(01) ינואר</option>
+                            <option value="02">(02) פברואר</option>
+                            <option value="03">(03) מרץ</option>
+                            <option value="04">(04) אפריל</option>
+                            <option value="05">(05) מאי</option>
+                            <option value="06">(06) יוני</option>
+                            <option value="07">(07) יולי</option>
+                            <option value="08">(08) אוגוסט</option>
+                            <option value="09">(09) ספטמבר</option>
+                            <option value="10">(10) אוקטובר</option>
+                            <option value="11">(11) נובמבר</option>
+                            <option value="12">(12) דצמבר</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">    
+                        <select class="form-control" name="card_expire_year" id="card_expire_year" ng-model="user.card_expire_year">
+                            <option value="10">2010</option>
+                            <option value="11">2011</option>
+                            <option value="12">2012</option>
+                            <option value="13">2013</option>
+                            <option value="14">2014</option>
+                            <option value="15">2015</option>
+                            <option value="16">2016</option>
+                            <option value="17">2017</option>
+                            <option value="18">2018</option>
+                            <option value="19">2019</option>
+                            <option value="20">2020</option>
+                        </select>
+                    </div >
+                </div>  
+                <input type="text" name="user-phone" class="form-control" id="user-phone" placeholder="טלפון" ng-model="user.phone">
+            </div>
+            <div class="form-group misg" >
+                <label for="exampleInputEmail1">סוג מנוי </label>
+                <div class="row">
+                    <label class="btn btn-success btn-lg" ng-model="user.radioModelType" btn-radio="'40sub'">מנוי רגיל</label>
+                    <label class="btn btn-success btn-lg" ng-model="user.radioModelType" btn-radio="'30sub'">רק ימימה</label>
+                </div>
+
+                    <label for="exampleInputEmail1">תקופת מנוי </label>
+                <div class="row">
+
+                    <label class="btn btn-primary btn-lg" ng-model="user.radioModelTime" btn-radio="'3manth'">מנוי שלושה חודשים</label>
+                    <label class="btn btn-primary btn-lg" ng-model="user.radioModelTime" btn-radio="'6manth'">מנוי חצי שנה</label>
+                    <label class="btn btn-primary btn-lg" ng-model="user.radioModelTime" btn-radio="'12manth'">מנוי שנתי</label>
+                </div>
+            </div>
+            {{radioModel}}
 
 
-<form role="form" ng-controller="formCtrl">
-    <div class="form-group" ng-repeat="fid in fildes">
-        <label for="exampleInputEmail1">{{fid.label}}</label>
-        <input type="{{fid.type}}" name="{{fid.name}}" class="form-control" id="{{fid.id}}" placeholder="{{fid.placeholder}}">
+
+            <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+    </div>
+    <div class="col-xs-6">
+        <div class="highlight">
+            <pre>
+{{user}}
+             <div style="height:400px"></div>               
+            </pre>
+        </div>
+
     </div>
 
-    <div class="form-group">
-        <label for="exampleInputFile">File input</label>
-        <input type="file" id="exampleInputFile">
-        <p class="help-block">Example block-level help text here.</p>
-    </div>
-    <div class="checkbox">
-        <label>
-            <input type="checkbox"> Check me out
-        </label>
-    </div>
-    <button type="submit" class="btn btn-default">Submit</button>
-</form>
+</div>
