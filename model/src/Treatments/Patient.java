@@ -6,8 +6,6 @@
 
 package Treatments;
 
-import org.jfairy.Fairy;
-import org.jfairy.producer.person.Person;
 
 /**
  *
