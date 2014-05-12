@@ -12,22 +12,48 @@ var myApp = angular.module('regform', [
     'ui.bootstrap'
 ]);
 
-
+var adress="http://localhost/www/ashira/ashira-reg/use-api.php"
 /* Controllers */
+    function FrmController($scope, $http) {
+                $scope.errors = [];
+                $scope.msgs = [];
 
-angular.module('myApp.controllers', []).
+                $scope.SignUp = function() {
+
+                    $scope.errors.splice(0, $scope.errors.length); // remove all error messages
+                    $scope.msgs.splice(0, $scope.msgs.length);
+
+                    $http.post('post_es.php', {'uname': $scope.username, 'pswd': $scope.userpassword, 'email': $scope.useremail}
+                    ).success(function(data, status, headers, config) {
+                        if (data.msg != '')
+                        {
+                            $scope.msgs.push(data.msg);
+                        }
+                        else
+                        {
+                            $scope.errors.push(data.error);
+                        }
+                    }).error(function(data, status) { // called asynchronously if an error occurs
+// or server returns response with an error status.
+                        $scope.errors.push(status);
+                    });
+                }
+            }
+angular.module('myApp.controllers', [] ).
         controller('MyCtrl1', ['$scope', '$http', function($scope, $http) {
 
                 $http.get('js/data/ashira.json').success(function(data) {
                     $scope.movies = data;
                 });
 
-            }]).controller('formCtrl', ['$scope', function($scope) {
+            }]).controller('formCtrl', ['$scope','$http', function($scope,$http) {
+$http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
 
 //                    $http.get('js/data/ashira.json').success(function(data) {
 //                        $scope.movies = data;
 //                    });
-        $scope.fildes = [{
+        $scope.fildes = 
+                [{
                 'name': "email",
                 "type": "email",
                 "id": "email",
@@ -88,18 +114,32 @@ angular.module('myApp.controllers', []).
         $scope.user ={};
         $scope.user.submitTheForm = function(item, event) {
             console.log("--> Submitting form");
-            var dataObject = {
-                name: $scope.myForm.name
-                , car: $scope.myForm.car
-            };
+                var dataObject = {
+                    name: "$scope.myForm.name"
+                    , car: "$scope.myForm.car"
+                };
+console.log($scope.user);
+ var responsePromise = $http({
+    url: adress,
+    method: "POST",
+    data: $scope.user,
+    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 
-            var responsePromise = $http.post("/angularjs-examples/json-test-data.jsp", dataObject, {});
-            responsePromise.success(function(dataFromServer, status, headers, config) {
-                console.log(dataFromServer.title);
-            });
-            responsePromise.error(function(data, status, headers, config) {
-                alert("Submitting form failed!");
-            });
+}).then( function (res){
+    console.log(res);
+},function (res){
+    console.log("err "+res);
+
+}
+);
+//             = $http.post(adress, $scope.user, {});
+//            responsePromise.success(function(dataFromServer, status, headers, config) {
+//                console.log(dataFromServer);
+//                console.log(headers);
+//            });
+//            responsePromise.error(function(data, status, headers, config) {
+//                alert("Submitting form failed!");
+//            });
         };
 
 
