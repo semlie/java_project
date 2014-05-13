@@ -42,7 +42,7 @@ $otherPaymentsSum = 0;
 
 
 //set time
-date_default_timezone_set('Asia,Jerusalem');
+//date_default_timezone_set('Asia,Jerusalem');
 $date = date('Y/m/d');
 
 $date = date('Y-m-d', strtotime("+3 months", strtotime($date)));
@@ -86,12 +86,12 @@ $levels = array();
 //add the levels
 switch ($maslul) {
     case '40sub':
-        $levels[] = '';
-        $levels[] = '';
+        $levels[] = '1309294999';
+        $levels[] = '1399927557';
 
         break;
     case '30sub':
-        $levels[] = '';
+        $levels[] = '1399927557';
 
         break;
 
@@ -118,12 +118,13 @@ $date = date('Y-m-d', strtotime("+12 months", strtotime($date)));
 }
 
 //address
+define('ADDR', 'http://ashira.co.il'); 
+define('MPI', '73a8cba5f3ad8b5425ef001806613434'); 
 
-$api_adres = "http://ashira.co.il";
 
 function createNewMember($name, $email,$user_pass,$address,$city, $country ,$expDate ,$levels) {
     //get api object
-    $api = new wlmapiclass($api_adres, $api_m);
+    $api = new wlmapiclass(ADDR, MPI);
     $api->return_format = 'php'; // <- value can also be xml or json
 //add the data to send 
     $data = array();
@@ -290,3 +291,4 @@ function searchUsers($param, $searchCreteria) {
 }
 
 //echo getSpecificMember("1_admin", "israellieb@gmail.com");
+createNewMember("smulik12","iii@ssss.cc","11111","הרצוג","בניברק","israel","2014/08/01",array("1399927557","1309294999"));
