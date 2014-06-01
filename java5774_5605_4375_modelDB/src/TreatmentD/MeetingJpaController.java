@@ -24,6 +24,7 @@ public class MeetingJpaController implements Serializable {
 
     public MeetingJpaController(EntityManagerFactory emf) {
         this.emf = emf;
+               EntityManager em = this.emf.createEntityManager();
     }
     private EntityManagerFactory emf = null;
 

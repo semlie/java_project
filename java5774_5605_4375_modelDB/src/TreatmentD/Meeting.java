@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package TreatmentD;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,6 +22,7 @@ import javax.persistence.Temporal;
  */
 @Entity
 public class Meeting implements Serializable {
+
     @ManyToOne()
     private static final long serialVersionUID = 1L;
     @Id
@@ -29,9 +30,41 @@ public class Meeting implements Serializable {
     private Long id;
     private Patient patient;
     private Boolean payed;
+    @Column(length = 3000)
     private Services service;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date date;
+
+    public Meeting() {
+    }
+
+    public Meeting(Meeting m) {
+        this.patient = m.getPatient();
+        this.payed = m.isPayed();
+        this.service = m.getService();
+        this.date = m.getDate();
+    }
+
+    public Meeting(Long id, Patient patient, Boolean payed, Services service, Date date) {
+
+        this.patient = patient;
+        this.payed = payed;
+        this.service = service;
+        this.date = date;
+    }
+        public Meeting(Patient patient,  Services service, Date date) {
+
+        this.patient = patient;
+        this.payed = false;
+        this.service = service;
+        this.date = date;
+    }
+                public Meeting(Patient patient,  Services service) {
+
+        this.patient = patient;
+        this.payed = false;
+        this.service = service;
+    }
 
     public Long getId() {
         return id;
@@ -63,7 +96,39 @@ public class Meeting implements Serializable {
 
     @Override
     public String toString() {
-        return "TreatmentD.Meeting[ id=" + id + " ]";
+        return "Meeting{" + "id=" + id + ", patient=" + patient + ", payed=" + payed + ", service=" + service + ", date=" + date + '}';
     }
-    
+
+    public Patient getPatient() {
+        return patient;
+    }
+
+    public void setPatient(Patient patient) {
+        this.patient = patient;
+    }
+
+    public Boolean isPayed() {
+        return payed;
+    }
+
+    public void setPayed(Boolean payed) {
+        this.payed = payed;
+    }
+
+    public Services getService() {
+        return service;
+    }
+
+    public void setService(Services service) {
+        this.service = service;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
 }

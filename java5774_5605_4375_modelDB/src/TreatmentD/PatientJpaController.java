@@ -21,9 +21,11 @@ import javax.persistence.criteria.Root;
  * @author Admin
  */
 public class PatientJpaController implements Serializable {
-
+    
+    
     public PatientJpaController(EntityManagerFactory emf) {
         this.emf = emf;
+        EntityManager em = this.emf.createEntityManager();
     }
     private EntityManagerFactory emf = null;
 
@@ -121,6 +123,7 @@ public class PatientJpaController implements Serializable {
             em.close();
         }
     }
+    
 
     public int getPatientCount() {
         EntityManager em = getEntityManager();

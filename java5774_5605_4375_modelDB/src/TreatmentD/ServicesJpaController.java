@@ -24,6 +24,7 @@ public class ServicesJpaController implements Serializable {
 
     public ServicesJpaController(EntityManagerFactory emf) {
         this.emf = emf;
+               EntityManager em = this.emf.createEntityManager();
     }
     private EntityManagerFactory emf = null;
 

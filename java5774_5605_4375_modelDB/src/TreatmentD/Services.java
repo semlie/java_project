@@ -29,8 +29,7 @@ public class Services implements Serializable {
     private Long id;
     public enum TypesTret {SHIATSU,ACUPNCTURE ,MESO ,REFLEXOLOGY} //Treatment types
     public enum TypesCons {SHIATSU,ACUPNCTURE ,MESO ,REFLEXOLOGY} //counseling types
-    private int Sid;
-    @Temporal(javax.persistence.TemporalType.DATE)
+   @Temporal(javax.persistence.TemporalType.DATE)
     private Date date;
     private String nameOfAttendant;
     private double price;
@@ -50,6 +49,16 @@ public class Services implements Serializable {
         return hash;
     }
 
+    public Services(Long id, Date date, String nameOfAttendant, double price) {
+        this.date = date;
+        this.nameOfAttendant = nameOfAttendant;
+        this.price = price;
+        
+    }
+
+    public Services() {
+    }
+
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
@@ -65,7 +74,33 @@ public class Services implements Serializable {
 
     @Override
     public String toString() {
-        return "TreatmentD.Services[ id=" + id + " ]";
+        return "Services{" + "id=" + id + ", date=" + date + ", nameOfAttendant=" + nameOfAttendant + ", price=" + price + '}';
+    }
+
+    
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public String getNameOfAttendant() {
+        return nameOfAttendant;
+    }
+
+    public void setNameOfAttendant(String nameOfAttendant) {
+        this.nameOfAttendant = nameOfAttendant;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
     
 }

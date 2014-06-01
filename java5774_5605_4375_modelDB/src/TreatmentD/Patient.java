@@ -24,9 +24,26 @@ public class Patient implements Serializable {
     private Long id;
 
     private String name;
-    private int Pid;
     private String phone;
 
+    public Patient(Long id, String name, String phone) {
+        setId(id);
+        this.name = name;
+        this.phone = phone;
+    }
+
+    public Patient() {
+    }
+
+    public Patient(String name, Integer id, String phone) {
+        this.name = name;
+        this.phone = phone;
+//        setId(Long.parseLong(id.toString()));
+    }
+
+    
+    
+   
     public Long getId() {
         return id;
     }
@@ -55,9 +72,30 @@ public class Patient implements Serializable {
         return true;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+   
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
     @Override
     public String toString() {
-        return "TreatmentD.NewEntity[ id=" + id + " ]";
+        return "Patient{" + "id=" + id + ", name=" + name + ", phone=" + phone + '}';
     }
+
+  
+
 
 }
