@@ -11,7 +11,6 @@ import TreatmentD.Counseling;
 import TreatmentD.CounselingJpaController;
 import TreatmentD.Meeting;
 import TreatmentD.Patient;
-import TreatmentD.PatientJpaController;
 import TreatmentD.Services;
 import java.util.ArrayList;
 import javax.persistence.Persistence;

@@ -15,11 +15,18 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Temporal;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlSeeAlso;
 
 /**
  *
  * @author Admin
  */
+@XmlSeeAlso({Treatment.class,Counseling.class})
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(name = "Services")
 @Entity
 @Inheritance( strategy = InheritanceType.TABLE_PER_CLASS)
 public class Services implements Serializable {

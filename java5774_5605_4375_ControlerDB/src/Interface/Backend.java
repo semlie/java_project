@@ -16,6 +16,9 @@ import java.util.ArrayList;
  * @author Dell
  */
 public interface Backend {
+    public void changePatient(ArrayList<Patient> PL) throws Exception;
+    public void changeMeeting(ArrayList<Meeting> ML) throws Exception;
+    public void changeServices(ArrayList<Services> SL) throws Exception;
     /**
      * Add Patient to data source
      * @param p
