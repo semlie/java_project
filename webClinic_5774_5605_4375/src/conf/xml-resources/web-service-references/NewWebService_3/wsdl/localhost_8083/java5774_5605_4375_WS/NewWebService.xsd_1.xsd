@@ -1,0 +1,378 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is Metro/2.3 (tags/2.3-7528; 2013-04-29T19:34:10+0000) JAXWS-RI/2.2.8 JAXWS/2.2 svn-revision#unknown. --><xs:schema xmlns:tns="http://webService/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://webService/">
+
+<xs:element name="AddMeeting" type="tns:AddMeeting"/>
+
+<xs:element name="AddMeetingResponse" type="tns:AddMeetingResponse"/>
+
+<xs:element name="AddPatiant" type="tns:AddPatiant"/>
+
+<xs:element name="AddPatiantResponse" type="tns:AddPatiantResponse"/>
+
+<xs:element name="AddService" type="tns:AddService"/>
+
+<xs:element name="AddServiceResponse" type="tns:AddServiceResponse"/>
+
+<xs:element name="CalcAllPatientTotalCost" type="tns:CalcAllPatientTotalCost"/>
+
+<xs:element name="CalcAllPatientTotalCostResponse" type="tns:CalcAllPatientTotalCostResponse"/>
+
+<xs:element name="CalcPatientPaid" type="tns:CalcPatientPaid"/>
+
+<xs:element name="CalcPatientPaidResponse" type="tns:CalcPatientPaidResponse"/>
+
+<xs:element name="CalcPatientTotalCost" type="tns:CalcPatientTotalCost"/>
+
+<xs:element name="CalcPatientTotalCostResponse" type="tns:CalcPatientTotalCostResponse"/>
+
+<xs:element name="CalcPatientUnpaidMeeting" type="tns:CalcPatientUnpaidMeeting"/>
+
+<xs:element name="CalcPatientUnpaidMeetingResponse" type="tns:CalcPatientUnpaidMeetingResponse"/>
+
+<xs:element name="Counseling" type="tns:counseling"/>
+
+<xs:element name="DelMeeting" type="tns:DelMeeting"/>
+
+<xs:element name="DelMeetingResponse" type="tns:DelMeetingResponse"/>
+
+<xs:element name="DelPatient" type="tns:DelPatient"/>
+
+<xs:element name="DelPatientResponse" type="tns:DelPatientResponse"/>
+
+<xs:element name="DelService" type="tns:DelService"/>
+
+<xs:element name="DelServiceResponse" type="tns:DelServiceResponse"/>
+
+<xs:element name="Exception" type="tns:Exception"/>
+
+<xs:element name="GetAllMeetings" type="tns:GetAllMeetings"/>
+
+<xs:element name="GetAllMeetingsResponse" type="tns:GetAllMeetingsResponse"/>
+
+<xs:element name="GetAllPatient" type="tns:GetAllPatient"/>
+
+<xs:element name="GetAllPatientResponse" type="tns:GetAllPatientResponse"/>
+
+<xs:element name="GetAllServices" type="tns:GetAllServices"/>
+
+<xs:element name="GetAllServicesResponse" type="tns:GetAllServicesResponse"/>
+
+<xs:element name="GetPatientMeeting" type="tns:GetPatientMeeting"/>
+
+<xs:element name="GetPatientMeetingResponse" type="tns:GetPatientMeetingResponse"/>
+
+<xs:element name="Meeting" type="tns:meeting"/>
+
+<xs:element name="Patient" type="tns:patient"/>
+
+<xs:element name="Services" type="tns:services"/>
+
+<xs:element name="Treatment" type="tns:treatment"/>
+
+<xs:element name="changeMeeting" type="tns:changeMeeting"/>
+
+<xs:element name="changeMeetingResponse" type="tns:changeMeetingResponse"/>
+
+<xs:element name="changePatient" type="tns:changePatient"/>
+
+<xs:element name="changePatientResponse" type="tns:changePatientResponse"/>
+
+<xs:element name="changeServices" type="tns:changeServices"/>
+
+<xs:element name="changeServicesResponse" type="tns:changeServicesResponse"/>
+
+<xs:element name="counselingType" type="tns:counselingType"/>
+
+<xs:element name="counselingTypeResponse" type="tns:counselingTypeResponse"/>
+
+<xs:element name="hello" type="tns:hello"/>
+
+<xs:element name="helloResponse" type="tns:helloResponse"/>
+
+<xs:element name="treatmentType" type="tns:treatmentType"/>
+
+<xs:element name="treatmentTypeResponse" type="tns:treatmentTypeResponse"/>
+
+<xs:complexType name="DelPatient">
+<xs:sequence>
+<xs:element name="p" type="tns:patient" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="patient">
+<xs:sequence>
+<xs:element name="id" type="xs:long" minOccurs="0"/>
+<xs:element name="name" type="xs:string" minOccurs="0"/>
+<xs:element name="phone" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="DelPatientResponse">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="Exception">
+<xs:sequence>
+<xs:element name="message" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="DelService">
+<xs:sequence>
+<xs:element name="s" type="tns:services" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="services">
+<xs:sequence>
+<xs:element name="id" type="xs:long" minOccurs="0"/>
+<xs:element name="date" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="nameOfAttendant" type="xs:string" minOccurs="0"/>
+<xs:element name="price" type="xs:double"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="treatment">
+<xs:complexContent>
+<xs:extension base="tns:services">
+<xs:sequence>
+<xs:element name="types" type="tns:typesTret" minOccurs="0"/>
+<xs:element name="problem" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="counseling">
+<xs:complexContent>
+<xs:extension base="tns:services">
+<xs:sequence>
+<xs:element name="typs" type="tns:typesCons" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="DelServiceResponse">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="CalcPatientPaid">
+<xs:sequence>
+<xs:element name="p" type="tns:patient" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="CalcPatientPaidResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:double"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="GetPatientMeeting">
+<xs:sequence>
+<xs:element name="p" type="tns:patient" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="GetPatientMeetingResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:meeting" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="meeting">
+<xs:sequence>
+<xs:element name="id" type="xs:long" minOccurs="0"/>
+<xs:element name="patient" type="tns:patient" minOccurs="0"/>
+<xs:element name="payed" type="xs:boolean" minOccurs="0"/>
+<xs:element name="service" type="tns:services" minOccurs="0"/>
+<xs:element name="date" type="xs:dateTime" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="treatmentType">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="treatmentTypeResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="GetAllMeetings">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="GetAllMeetingsResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:meeting" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="CalcPatientUnpaidMeeting">
+<xs:sequence>
+<xs:element name="p" type="tns:patient" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="CalcPatientUnpaidMeetingResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:double"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="hello">
+<xs:sequence>
+<xs:element name="name" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="helloResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="counselingType">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="counselingTypeResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="GetAllPatient">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="GetAllPatientResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:patient" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="GetAllServices">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="GetAllServicesResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:services" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="AddService">
+<xs:sequence>
+<xs:element name="s" type="tns:services" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="AddServiceResponse">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="CalcPatientTotalCost">
+<xs:sequence>
+<xs:element name="p" type="tns:patient" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="CalcPatientTotalCostResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:double"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="changeServices">
+<xs:sequence>
+<xs:element name="SL" type="tns:services" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="changeServicesResponse">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="changeMeeting">
+<xs:sequence>
+<xs:element name="ML" type="tns:meeting" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="changeMeetingResponse">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="AddPatiant">
+<xs:sequence>
+<xs:element name="p" type="tns:patient" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="AddPatiantResponse">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="CalcAllPatientTotalCost">
+<xs:sequence>
+<xs:element name="metting" type="tns:meeting" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="CalcAllPatientTotalCostResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:double"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="changePatient">
+<xs:sequence>
+<xs:element name="PL" type="tns:patient" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="changePatientResponse">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="AddMeeting">
+<xs:sequence>
+<xs:element name="m" type="tns:meeting" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="AddMeetingResponse">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="DelMeeting">
+<xs:sequence>
+<xs:element name="m" type="tns:meeting" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="DelMeetingResponse">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:simpleType name="typesTret">
+<xs:restriction base="xs:string">
+<xs:enumeration value="SHIATSU"/>
+<xs:enumeration value="ACUPNCTURE"/>
+<xs:enumeration value="MESO"/>
+<xs:enumeration value="REFLEXOLOGY"/>
+</xs:restriction>
+</xs:simpleType>
+
+<xs:simpleType name="typesCons">
+<xs:restriction base="xs:string">
+<xs:enumeration value="SHIATSU"/>
+<xs:enumeration value="ACUPNCTURE"/>
+<xs:enumeration value="MESO"/>
+<xs:enumeration value="REFLEXOLOGY"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:schema>
