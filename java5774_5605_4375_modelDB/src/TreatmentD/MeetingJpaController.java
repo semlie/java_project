@@ -22,16 +22,28 @@ import javax.persistence.criteria.Root;
  */
 public class MeetingJpaController implements Serializable {
 
+    /**
+     *
+     * @param emf
+     */
     public MeetingJpaController(EntityManagerFactory emf) {
         this.emf = emf;
                EntityManager em = this.emf.createEntityManager();
     }
     private EntityManagerFactory emf = null;
 
+    /**
+     *
+     * @return
+     */
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
     }
 
+    /**
+     *
+     * @param meeting
+     */
     public void create(Meeting meeting) {
         EntityManager em = null;
         try {
@@ -46,6 +58,12 @@ public class MeetingJpaController implements Serializable {
         }
     }
 
+    /**
+     *
+     * @param meeting
+     * @throws NonexistentEntityException
+     * @throws Exception
+     */
     public void edit(Meeting meeting) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
@@ -69,6 +87,11 @@ public class MeetingJpaController implements Serializable {
         }
     }
 
+    /**
+     *
+     * @param id
+     * @throws NonexistentEntityException
+     */
     public void destroy(Long id) throws NonexistentEntityException {
         EntityManager em = null;
         try {
@@ -90,10 +113,20 @@ public class MeetingJpaController implements Serializable {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public List<Meeting> findMeetingEntities() {
         return findMeetingEntities(true, -1, -1);
     }
 
+    /**
+     *
+     * @param maxResults
+     * @param firstResult
+     * @return
+     */
     public List<Meeting> findMeetingEntities(int maxResults, int firstResult) {
         return findMeetingEntities(false, maxResults, firstResult);
     }
@@ -114,6 +147,11 @@ public class MeetingJpaController implements Serializable {
         }
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     public Meeting findMeeting(Long id) {
         EntityManager em = getEntityManager();
         try {
@@ -123,6 +161,10 @@ public class MeetingJpaController implements Serializable {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public int getMeetingCount() {
         EntityManager em = getEntityManager();
         try {

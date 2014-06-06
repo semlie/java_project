@@ -1,7 +1,7 @@
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * and open the template in the edi%tor.
  */
 package guiclinic;
 
@@ -13,10 +13,17 @@ import backeddaoadapters.BackendWSAdapter;
  */
 public class GUIclinic {
 
+    /**
+     *
+     */
     public static BackendWSAdapter Controler;
 
     static {
-        Controler = new BackendWSAdapter();
+        Controler = new BackendWSAdapter();   /**
+     *
+     * @throws Exception
+     */
+
     }
 
     public static void init() throws Exception {
@@ -26,7 +33,7 @@ public class GUIclinic {
 //        Controler.changeMeeting(t.addListOfMeeting(Controler.GetAllPatient(), 30));
 //    Controler.changeServices(t.addListOfServices(Controler.GetAllPatient(), 7));
     }
-
+ 
     /**
      * @param args the command line arguments
      */
@@ -35,6 +42,6 @@ public class GUIclinic {
       init();
       enterForm MainForm = new enterForm();
       MainForm.setVisible(true);
-    }
+        }
 
 }

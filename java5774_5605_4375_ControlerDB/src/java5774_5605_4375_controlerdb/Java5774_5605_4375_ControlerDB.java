@@ -30,6 +30,9 @@ public class Java5774_5605_4375_ControlerDB implements Backend {
     private final ServicesJpaController ServicesCtrl;
     private final TreatmentJpaController TreatmentCtrl;
 
+    /**
+     *
+     */
     public Java5774_5605_4375_ControlerDB() {
         this.TreatmentCtrl = new TreatmentJpaController(Persistence.createEntityManagerFactory("java5774_5605_4375_modelDBPU"));
         this.ServicesCtrl = new ServicesJpaController(Persistence.createEntityManagerFactory("java5774_5605_4375_modelDBPU"));

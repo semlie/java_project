@@ -22,16 +22,28 @@ import javax.persistence.criteria.Root;
  */
 public class CounselingJpaController implements Serializable {
 
+    /**
+     *
+     * @param emf
+     */
     public CounselingJpaController(EntityManagerFactory emf) {
         this.emf = emf;
                EntityManager em = this.emf.createEntityManager();
     }
     private EntityManagerFactory emf = null;
 
+    /**
+     *
+     * @return
+     */
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
     }
 
+    /**
+     *
+     * @param counseling
+     */
     public void create(Counseling counseling) {
         EntityManager em = null;
         try {
@@ -46,6 +58,12 @@ public class CounselingJpaController implements Serializable {
         }
     }
 
+    /**
+     *
+     * @param counseling
+     * @throws NonexistentEntityException
+     * @throws Exception
+     */
     public void edit(Counseling counseling) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
@@ -69,6 +87,11 @@ public class CounselingJpaController implements Serializable {
         }
     }
 
+    /**
+     *
+     * @param id
+     * @throws NonexistentEntityException
+     */
     public void destroy(Long id) throws NonexistentEntityException {
         EntityManager em = null;
         try {
@@ -90,10 +113,20 @@ public class CounselingJpaController implements Serializable {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public List<Counseling> findCounselingEntities() {
         return findCounselingEntities(true, -1, -1);
     }
 
+    /**
+     *
+     * @param maxResults
+     * @param firstResult
+     * @return
+     */
     public List<Counseling> findCounselingEntities(int maxResults, int firstResult) {
         return findCounselingEntities(false, maxResults, firstResult);
     }
@@ -114,6 +147,11 @@ public class CounselingJpaController implements Serializable {
         }
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     public Counseling findCounseling(Long id) {
         EntityManager em = getEntityManager();
         try {
@@ -123,6 +161,10 @@ public class CounselingJpaController implements Serializable {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public int getCounselingCount() {
         EntityManager em = getEntityManager();
         try {

@@ -56,7 +56,7 @@ public class toolsRandoData {
         Date d = new Date();
         double price = r.nextDouble() % 250;
         Services.TypesCons typeC = Services.TypesCons.ACUPNCTURE;
-        Services.TypesTret typeT = Services.TypesTret.ACUPNCTURE;
+        Services.TypesTret typeT = Services.TypesTret.SHIATSU;
         String problem = f.paragraph();
 
         Patient p = new Patient(name, id, phone);
@@ -69,6 +69,11 @@ public class toolsRandoData {
         return s;
     }
 
+    /**
+     *
+     * @param NumOfPatient
+     * @return
+     */
     public ArrayList<Patient> addListofPatient(int NumOfPatient) {
         ArrayList<Patient> ret = new ArrayList<>();
         for (int i = 0; i < NumOfPatient; i++) {
@@ -77,6 +82,12 @@ public class toolsRandoData {
         return ret;
     }
 
+    /**
+     *
+     * @param ps
+     * @param MaxNumOfMeetingForEach
+     * @return
+     */
     public ArrayList<Meeting> addListOfMeeting(ArrayList<Patient> ps, int MaxNumOfMeetingForEach) {
         ArrayList<Meeting> m = new ArrayList<>();
         for (int i = 0; i < MaxNumOfMeetingForEach; i++) {
@@ -88,6 +99,12 @@ public class toolsRandoData {
         }
         return m;
     }
+
+    /**
+     *
+     * @param NumOfService
+     * @return
+     */
     public ArrayList<Services> addListOfServices(int NumOfService){
         ArrayList<Services> s = new ArrayList<>();
         for (int i = 0; i < NumOfService; i++) {

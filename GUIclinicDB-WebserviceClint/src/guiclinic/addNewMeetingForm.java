@@ -258,12 +258,13 @@ public class addNewMeetingForm extends javax.swing.JFrame {
 //                     Date date = jXDatePicker1.getDate();
                      if(type.equals("יעוץ")){
                         Services.TypesCons tC = Services.TypesCons.valueOf(jTableAllServicesAvilable.getValueAt(i, 0).toString());
-                        GUIclinic.Controler.AddMeeting(new Meeting(p,new Counseling(tC, id, date, price, name)));
+                        GUIclinic.Controler.AddMeeting(new Meeting(p,new Counseling(tC, id, date, price, name),date));
                      }
                      else{
                          Services.TypesTret tT = Services.TypesTret.valueOf(jTableAllServicesAvilable.getValueAt(i, 0).toString());
-                         GUIclinic.Controler.AddMeeting(new Meeting(p,new Treatment(tT, "", id, date, price, name)));
+                         GUIclinic.Controler.AddMeeting(new Meeting(p,new Treatment(tT, "", id, date, price, name),date));
                      }
+                         JOptionPane.showMessageDialog(null, " נוספה פגישה חדשה");
                          
                } catch (Exception ex) {
                    Logger.getLogger(addNewMeetingForm.class.getName()).log(Level.SEVERE, null, ex);
@@ -276,6 +277,11 @@ public class addNewMeetingForm extends javax.swing.JFrame {
     private void jXDatePicker1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXDatePicker1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jXDatePicker1ActionPerformed
+
+    /**
+     *
+     * @throws Exception
+     */
     public void fillSelctType() throws Exception{
         
         jComboBoxTreatType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "יעוץ", "טיפול"}));
@@ -323,7 +329,12 @@ public class addNewMeetingForm extends javax.swing.JFrame {
                     } catch (Exception ex) {
                         Logger.getLogger(addNewMeetingForm.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                }
+  
+    /**
+     *
+     * @throws Exception
+     */
+              }
 
             }
         });
@@ -335,7 +346,13 @@ public class addNewMeetingForm extends javax.swing.JFrame {
         }
         jComboBoxCoustemer.setModel(new javax.swing.DefaultComboBoxModel(comboBoxItems));
 //         SwingUtilities.updateComponentTreeUI(this);
-        jComboBoxCoustemer.invalidate();
+        jComboBoxCoustemer
+    /**
+     *
+     * @param b
+     * @return
+     */
+.invalidate();
         jComboBoxCoustemer.validate();
         jComboBoxCoustemer.repaint();
     }

@@ -31,32 +31,56 @@ public class Patient implements Serializable {
     private String name;
     private String phone;
 
+    /**
+     *
+     * @param id
+     * @param name
+     * @param phone
+     */
     public Patient(Long id, String name, String phone) {
         setId(id);
         this.name = name;
         this.phone = phone;
     }
 
+    /**
+     *
+     */
     public Patient() {
     }
 
+    /**
+     *
+     * @param name
+     * @param id
+     * @param phone
+     */
     public Patient(String name, Integer id, String phone) {
         this.name = name;
         this.phone = phone;
 //        setId(Long.parseLong(id.toString()));
     }
 
-    
-    
-   
+    /**
+     *
+     * @return
+     */
     public Long getId() {
         return id;
     }
 
+    /**
+     *
+     * @param id
+     */
     public void setId(Long id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public int hashCode() {
         int hash = 0;
@@ -64,6 +88,11 @@ public class Patient implements Serializable {
         return hash;
     }
 
+    /**
+     *
+     * @param object
+     * @return
+     */
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
@@ -77,24 +106,42 @@ public class Patient implements Serializable {
         return true;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     *
+     * @param name
+     */
     public void setName(String name) {
         this.name = name;
     }
 
-   
-
+    /**
+     *
+     * @return
+     */
     public String getPhone() {
         return phone;
     }
 
+    /**
+     *
+     * @param phone
+     */
     public void setPhone(String phone) {
         this.phone = phone;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String toString() {
         return "Patient{" + "id=" + id + ", name=" + name + ", phone=" + phone + '}';

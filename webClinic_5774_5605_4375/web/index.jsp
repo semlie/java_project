@@ -23,41 +23,9 @@
         <link rel="stylesheet" href=" //cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/css/bootstrap-rtl.css">
         <link rel="stylesheet" href=" //cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/css/bootstrap.min.css">
 
-
-
-        <title>JSP Page</title>
-    </head>
-    <body>
-            <div class="container">
-            <div class="row">
-        <div class="navbar navbar-inverse " role="navigation">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#home">עמוד ראשי</a>
-        </div>
-        <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="#service">services</a></li>
-            <li><a href="#meeting">meeting</a></li>
-            <li><a href="#users">users</a></li>
-            <li><a href="#">Help</a></li>
-          </ul>
-      
-        </div>
-      </div>
-        </div>
-      </div>
-    </div>
-        <div class="container">
-            <div class="row">
-                <h1>Hello World!</h1>    <%-- start web service invocation --%><hr/>
-                <%
+<%
+                        JSONObject ob = new JSONObject();
+                        JSONObject ob1 = new JSONObject();
                     try {
                         JSONArray g = new JSONArray();
                         JSONSerializer s = new JSONSerializer();
@@ -66,16 +34,64 @@
                         // TODO process result here
                         java.util.List<webservice.Meeting> result = port.getAllMeetings();
                         out.println("Result = " + result);
+                        out.println("<br>");
+                        out.println("<br>");
+                        out.println("<br>");
+                        ArrayList a = new ArrayList();
+                        for (int i = 0; i < 10; i++) {
+                            ob.put("name" + i, i);
+                        }
+ob1.put("m", ob);
 
+                        session.setAttribute("meeting",ob1);
+                        String att = session.getAttribute("meeting").toString();
+                        out.println("s:" + session.getAttribute("meeting"));
                     } catch (Exception ex) {
                         // TODO handle custom exceptions here
                     }
                 %>
                 <%-- end web service invocation --%><hr/>
+
+        <title>JSP Page</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="navbar navbar-inverse " role="navigation">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="#home">עמוד ראשי</a>
+                        </div>
+                        <div class="navbar-collapse collapse">
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><a href="#service">services</a></li>
+                                <li><a href="#meeting">meeting</a></li>
+                                <li><a href="#users">users</a></li>
+                                <li><a href="#">Help</a></li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <h1>Hello World!</h1>    <%-- start web service invocation --%><hr/>
+                
                 <div class="view-container">
                     <div ng-view class="view-frame"></div>
                 </div>
-
+                <script> 
+                  
+                </script>
+                    
             </div>
         </div>
     </body>

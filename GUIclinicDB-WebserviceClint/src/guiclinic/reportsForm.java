@@ -80,6 +80,10 @@ public class reportsForm extends javax.swing.JFrame {
         jTextFieldCost.setText(Double.toString(GUIclinic.Controler.CalcPatientTotalCost(p)));
     }
     
+    /**
+     *
+     * @throws Exception
+     */
     public void init() throws Exception{
         jTextFieldPatients.setText(Integer.toString(GUIclinic.Controler.GetAllPatient().size()));
         jTextFieldServices.setText(Integer.toString(GUIclinic.Controler.GetAllServices().size()));

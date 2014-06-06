@@ -204,7 +204,7 @@ public class editMeeting extends javax.swing.JFrame {
     private void init() throws Exception{
         jXDatePicker1.setFormats("dd-MM-yyyy HH:mm:ss");
         Patient p = meeting.getPatient();
-                    Long id = Long.getLong(meeting.getService().getId().toString());
+                    Long id = meeting.getService().getId();
                     double price = meeting.getService().getPrice();
                     String name = meeting.getService().getNameOfAttendant();
                     JFormattedTextField editor = jXDatePicker1.getEditor();
@@ -219,6 +219,11 @@ public class editMeeting extends javax.swing.JFrame {
             Logger.getLogger(editMeeting.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    /**
+     *
+     * @throws Exception
+     */
     public void fillSelctType() throws Exception{
         
         jComboBoxTreatType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "יעוץ", "טיפול"}));

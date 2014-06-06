@@ -208,7 +208,7 @@ public class addNewServiceForm extends javax.swing.JFrame {
         Services s;
         if (jComboBoxTypeOfService.getSelectedItem() == "יעוץ") {
                        // JOptionPane.showMessageDialog(null, "נבחר יעוץ");
-            s = new Counseling(Services.TypesCons.valueOf(jComboBoxTypeOfCategory.getSelectedItem().toString()), -1, null,  Double.parseDouble(jTextPrice.getText()), jTextNameOfAten.getText());
+            s = new Counseling( Services.TypesCons.valueOf(jComboBoxTypeOfCategory.getSelectedItem().toString()), -1, null,  Double.parseDouble(jTextPrice.getText()), jTextNameOfAten.getText());
         } 
         else {
             s = new Treatment(Services.TypesTret.valueOf(jComboBoxTypeOfCategory.getSelectedItem().toString()), jTextTheProblem.getText(), -1, null,  Double.parseDouble(jTextPrice.getText()), jTextNameOfAten.getText());

@@ -31,36 +31,75 @@ public class Counseling extends Services implements Serializable {
     @Enumerated(EnumType.STRING)
     private TypesCons typs;
 
+    /**
+     *
+     */
     public Counseling() {
     }
 
+    /**
+     *
+     * @param typs
+     */
     public Counseling(TypesCons typs) {
         this.typs = typs;
     }
 
+    /**
+     *
+     * @param c
+     */
     public Counseling(Counseling c) {
  super(c.getId(),c.getDate(),c.getNameOfAttendant(),c.getPrice());
         this.typs = c.getTyps();
     }
 
+    /**
+     *
+     * @param typs
+     * @param id
+     * @param date
+     * @param nameOfAttendant
+     * @param price
+     */
     public Counseling(TypesCons typs, Long id, Date date, String nameOfAttendant, double price) {
         super( id, date, nameOfAttendant, price);
         this.typs = typs;
     }
 
+    /**
+     *
+     * @param typeC
+     * @param id
+     * @param d
+     * @param price
+     * @param nameOfAttendant
+     */
     public Counseling(TypesCons typeC, int id, Date d, double price, String nameOfAttendant) {
         super(new Long(id), d, nameOfAttendant, price);
         this.typs = typeC;
     }
 
+    /**
+     *
+     * @return
+     */
     public Long getId() {
         return super.getId();
     }
 
+    /**
+     *
+     * @param id
+     */
     public void setId(Long id) {
         super.setId(id);
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public int hashCode() {
         int hash = 0;
@@ -68,6 +107,11 @@ public class Counseling extends Services implements Serializable {
         return hash;
     }
 
+    /**
+     *
+     * @param object
+     * @return
+     */
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the getId() fields are not set
@@ -81,14 +125,26 @@ public class Counseling extends Services implements Serializable {
         return true;
     }
 
+    /**
+     *
+     * @return
+     */
     public TypesCons getTyps() {
         return this.typs;
     }
 
+    /**
+     *
+     * @param typs
+     */
     public void setTyps(TypesCons typs) {
         this.typs = typs;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String toString() {
         return "Counseling{" + "typs=" + typs + '}';

@@ -22,16 +22,28 @@ import javax.persistence.criteria.Root;
  */
 public class TreatmentJpaController implements Serializable {
 
+    /**
+     *
+     * @param emf
+     */
     public TreatmentJpaController(EntityManagerFactory emf) {
         this.emf = emf;
                EntityManager em = this.emf.createEntityManager();
     }
     private EntityManagerFactory emf = null;
 
+    /**
+     *
+     * @return
+     */
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
     }
 
+    /**
+     *
+     * @param treatment
+     */
     public void create(Treatment treatment) {
         EntityManager em = null;
         try {
@@ -46,6 +58,12 @@ public class TreatmentJpaController implements Serializable {
         }
     }
 
+    /**
+     *
+     * @param treatment
+     * @throws NonexistentEntityException
+     * @throws Exception
+     */
     public void edit(Treatment treatment) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
@@ -69,6 +87,11 @@ public class TreatmentJpaController implements Serializable {
         }
     }
 
+    /**
+     *
+     * @param id
+     * @throws NonexistentEntityException
+     */
     public void destroy(Long id) throws NonexistentEntityException {
         EntityManager em = null;
         try {
@@ -90,10 +113,20 @@ public class TreatmentJpaController implements Serializable {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public List<Treatment> findTreatmentEntities() {
         return findTreatmentEntities(true, -1, -1);
     }
 
+    /**
+     *
+     * @param maxResults
+     * @param firstResult
+     * @return
+     */
     public List<Treatment> findTreatmentEntities(int maxResults, int firstResult) {
         return findTreatmentEntities(false, maxResults, firstResult);
     }
@@ -114,6 +147,11 @@ public class TreatmentJpaController implements Serializable {
         }
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     public Treatment findTreatment(Long id) {
         EntityManager em = getEntityManager();
         try {
@@ -123,6 +161,10 @@ public class TreatmentJpaController implements Serializable {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public int getTreatmentCount() {
         EntityManager em = getEntityManager();
         try {

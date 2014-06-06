@@ -34,21 +34,81 @@ public class Services implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
     private Long id;
-    public enum TypesTret {SHIATSU,ACUPNCTURE ,MESO ,REFLEXOLOGY} //Treatment types
-    public enum TypesCons {SHIATSU,ACUPNCTURE ,MESO ,REFLEXOLOGY} //counseling types
+
+    /**
+     *
+     */
+    public enum TypesTret {
+
+        /**
+         *
+         */
+        SHIATSU,
+
+        /**
+         *
+         */
+        ACUPNCTURE ,
+
+        /**
+         *
+         */
+        MESO ,
+
+        /**
+         *
+         */
+        REFLEXOLOGY} //Treatment types
+
+    /**
+     *
+     */
+    public enum TypesCons {
+
+        /**
+         *
+         */
+        SHIATSU,
+
+        /**
+         *
+         */
+        ACUPNCTURE ,
+
+        /**
+         *
+         */
+        MESO ,
+
+        /**
+         *
+         */
+        REFLEXOLOGY} //counseling types
    @Temporal(javax.persistence.TemporalType.DATE)
     private Date date;
     private String nameOfAttendant;
     private double price;
 
+    /**
+     *
+     * @return
+     */
     public Long getId() {
         return id;
     }
 
+    /**
+     *
+     * @param id
+     */
     public void setId(Long id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public int hashCode() {
         int hash = 0;
@@ -56,6 +116,13 @@ public class Services implements Serializable {
         return hash;
     }
 
+    /**
+     *
+     * @param id
+     * @param date
+     * @param nameOfAttendant
+     * @param price
+     */
     public Services(Long id, Date date, String nameOfAttendant, double price) {
         this.date = date;
         this.nameOfAttendant = nameOfAttendant;
@@ -63,9 +130,17 @@ public class Services implements Serializable {
         
     }
 
+    /**
+     *
+     */
     public Services() {
     }
 
+    /**
+     *
+     * @param object
+     * @return
+     */
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
@@ -79,33 +154,59 @@ public class Services implements Serializable {
         return true;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String toString() {
         return "Services{" + "id=" + id + ", date=" + date + ", nameOfAttendant=" + nameOfAttendant + ", price=" + price + '}';
     }
 
-    
-
+    /**
+     *
+     * @return
+     */
     public Date getDate() {
         return date;
     }
 
+    /**
+     *
+     * @param date
+     */
     public void setDate(Date date) {
         this.date = date;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getNameOfAttendant() {
         return nameOfAttendant;
     }
 
+    /**
+     *
+     * @param nameOfAttendant
+     */
     public void setNameOfAttendant(String nameOfAttendant) {
         this.nameOfAttendant = nameOfAttendant;
     }
 
+    /**
+     *
+     * @return
+     */
     public double getPrice() {
         return price;
     }
 
+    /**
+     *
+     * @param price
+     */
     public void setPrice(double price) {
         this.price = price;
     }

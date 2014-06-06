@@ -22,16 +22,28 @@ import javax.persistence.criteria.Root;
  */
 public class ServicesJpaController implements Serializable {
 
+    /**
+     *
+     * @param emf
+     */
     public ServicesJpaController(EntityManagerFactory emf) {
         this.emf = emf;
                EntityManager em = this.emf.createEntityManager();
     }
     private EntityManagerFactory emf = null;
 
+    /**
+     *
+     * @return
+     */
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
     }
 
+    /**
+     *
+     * @param services
+     */
     public void create(Services services) {
         EntityManager em = null;
         try {
@@ -46,6 +58,12 @@ public class ServicesJpaController implements Serializable {
         }
     }
 
+    /**
+     *
+     * @param services
+     * @throws NonexistentEntityException
+     * @throws Exception
+     */
     public void edit(Services services) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
@@ -69,6 +87,11 @@ public class ServicesJpaController implements Serializable {
         }
     }
 
+    /**
+     *
+     * @param id
+     * @throws NonexistentEntityException
+     */
     public void destroy(Long id) throws NonexistentEntityException {
         EntityManager em = null;
         try {
@@ -90,10 +113,20 @@ public class ServicesJpaController implements Serializable {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public List<Services> findServicesEntities() {
         return findServicesEntities(true, -1, -1);
     }
 
+    /**
+     *
+     * @param maxResults
+     * @param firstResult
+     * @return
+     */
     public List<Services> findServicesEntities(int maxResults, int firstResult) {
         return findServicesEntities(false, maxResults, firstResult);
     }
@@ -114,6 +147,11 @@ public class ServicesJpaController implements Serializable {
         }
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     public Services findServices(Long id) {
         EntityManager em = getEntityManager();
         try {
@@ -123,6 +161,10 @@ public class ServicesJpaController implements Serializable {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public int getServicesCount() {
         EntityManager em = getEntityManager();
         try {

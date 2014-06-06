@@ -22,17 +22,28 @@ import javax.persistence.criteria.Root;
  */
 public class PatientJpaController implements Serializable {
     
-    
+    /**
+     *
+     * @param emf
+     */
     public PatientJpaController(EntityManagerFactory emf) {
         this.emf = emf;
         EntityManager em = this.emf.createEntityManager();
     }
     private EntityManagerFactory emf = null;
 
+    /**
+     *
+     * @return
+     */
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
     }
 
+    /**
+     *
+     * @param patient
+     */
     public void create(Patient patient) {
         EntityManager em = null;
         try {
@@ -47,6 +58,12 @@ public class PatientJpaController implements Serializable {
         }
     }
 
+    /**
+     *
+     * @param patient
+     * @throws NonexistentEntityException
+     * @throws Exception
+     */
     public void edit(Patient patient) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
@@ -70,6 +87,11 @@ public class PatientJpaController implements Serializable {
         }
     }
 
+    /**
+     *
+     * @param id
+     * @throws NonexistentEntityException
+     */
     public void destroy(Long id) throws NonexistentEntityException {
         EntityManager em = null;
         try {
@@ -91,10 +113,20 @@ public class PatientJpaController implements Serializable {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public List<Patient> findPatientEntities() {
         return findPatientEntities(true, -1, -1);
     }
 
+    /**
+     *
+     * @param maxResults
+     * @param firstResult
+     * @return
+     */
     public List<Patient> findPatientEntities(int maxResults, int firstResult) {
         return findPatientEntities(false, maxResults, firstResult);
     }
@@ -115,6 +147,11 @@ public class PatientJpaController implements Serializable {
         }
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     public Patient findPatient(Long id) {
         EntityManager em = getEntityManager();
         try {
@@ -124,7 +161,10 @@ public class PatientJpaController implements Serializable {
         }
     }
     
-
+    /**
+     *
+     * @return
+     */
     public int getPatientCount() {
         EntityManager em = getEntityManager();
         try {

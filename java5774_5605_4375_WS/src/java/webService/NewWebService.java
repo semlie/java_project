@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package webService;
-
 import Interface.Backend;
 import TreatmentD.Meeting;
 import TreatmentD.Patient;

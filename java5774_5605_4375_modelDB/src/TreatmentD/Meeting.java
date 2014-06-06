@@ -41,9 +41,16 @@ public class Meeting implements Serializable {
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date date;
 
+    /**
+     *
+     */
     public Meeting() {
     }
 
+    /**
+     *
+     * @param m
+     */
     public Meeting(Meeting m) {
         this.patient = m.getPatient();
         this.payed = m.isPayed();
@@ -51,6 +58,14 @@ public class Meeting implements Serializable {
         this.date = m.getDate();
     }
 
+    /**
+     *
+     * @param id
+     * @param patient
+     * @param payed
+     * @param service
+     * @param date
+     */
     public Meeting(Long id, Patient patient, Boolean payed, Services service, Date date) {
 
         this.patient = patient;
@@ -58,28 +73,53 @@ public class Meeting implements Serializable {
         this.service = service;
         this.date = date;
     }
-        public Meeting(Patient patient,  Services service, Date date) {
+
+    /**
+     *
+     * @param patient
+     * @param service
+     * @param date
+     */
+    public Meeting(Patient patient, Services service, Date date) {
 
         this.patient = patient;
         this.payed = false;
         this.service = service;
         this.date = date;
     }
-                public Meeting(Patient patient,  Services service) {
+
+    /**
+     *
+     * @param patient
+     * @param service
+     */
+    public Meeting(Patient patient, Services service) {
 
         this.patient = patient;
         this.payed = false;
         this.service = service;
     }
 
+    /**
+     *
+     * @return
+     */
     public Long getId() {
         return id;
     }
 
+    /**
+     *
+     * @param id
+     */
     public void setId(Long id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public int hashCode() {
         int hash = 0;
@@ -87,6 +127,11 @@ public class Meeting implements Serializable {
         return hash;
     }
 
+    /**
+     *
+     * @param object
+     * @return
+     */
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
@@ -100,39 +145,75 @@ public class Meeting implements Serializable {
         return true;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String toString() {
         return "Meeting{" + "id=" + id + ", patient=" + patient + ", payed=" + payed + ", service=" + service + ", date=" + date + '}';
     }
 
+    /**
+     *
+     * @return
+     */
     public Patient getPatient() {
         return patient;
     }
 
+    /**
+     *
+     * @param patient
+     */
     public void setPatient(Patient patient) {
         this.patient = patient;
     }
 
+    /**
+     *
+     * @return
+     */
     public Boolean isPayed() {
         return payed;
     }
 
+    /**
+     *
+     * @param payed
+     */
     public void setPayed(Boolean payed) {
         this.payed = payed;
     }
 
+    /**
+     *
+     * @return
+     */
     public Services getService() {
         return service;
     }
 
+    /**
+     *
+     * @param service
+     */
     public void setService(Services service) {
         this.service = service;
     }
 
+    /**
+     *
+     * @return
+     */
     public Date getDate() {
         return date;
     }
 
+    /**
+     *
+     * @param date
+     */
     public void setDate(Date date) {
         this.date = date;
     }
