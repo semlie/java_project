@@ -1,2 +1,25 @@
-
-        <div>{{name}}</div>
+<h3>
+    רשימת מטופלים
+</h3> 
+<div class="table-responsive">
+            <table class="table table-striped">
+              <thead >
+                <tr>
+                   <th style="text-align:right">#</th>
+                  <th style="text-align:right">ID</th>
+                  <th style="text-align:right">שם</th>
+                  <th style="text-align:right">טלפון</th>           
+                </tr>
+              </thead>
+              <tbody>
+                  <tr ng-repeat="m in items">
+                  <td>{{m.no}}</td>
+                  <td> {{m.id}}</td>
+                  <td><a ng-href="#/users/{{m.id}}">{{m.name}}</a></td>
+                  <td>{{m.phone}}</td>
+             
+                </tr>
+              
+              </tbody>
+            </table>
+          </div>

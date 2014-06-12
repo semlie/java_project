@@ -15,7 +15,7 @@ import java.util.List;
  */
 public class Meeting {
     private Patient patient;
-    private Boolean payed;
+    private boolean payed;
     private Services service;
     private Date date;
 

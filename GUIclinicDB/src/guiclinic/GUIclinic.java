@@ -13,7 +13,7 @@ import java5774_5605_4375_controlerdb.Java5774_5605_4375_ControlerDB;
  * @author Dell
  */
 public class GUIclinic {
-
+//create like singltone
     public static Java5774_5605_4375_ControlerDB Controler;
 
     static {
@@ -22,6 +22,7 @@ public class GUIclinic {
 
     public static void init() throws Exception {
         toolsRandoData t = new toolsRandoData();
+        //call func to auto genertade patient ' services' meeting
 //        Controler.changePatient(t.addListofPatient(100));
 //        Controler.changeServices(t.addListOfServices(30));
 //        Controler.changeMeeting(t.addListOfMeeting(Controler.GetAllPatient(), 30));
@@ -34,6 +35,7 @@ public class GUIclinic {
     public static void main(String[] args) throws Exception {
         // TODO code application logic here
       init();
+      //run the main form
       enterForm MainForm = new enterForm();
       MainForm.setVisible(true);
     }

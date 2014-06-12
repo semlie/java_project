@@ -1,2 +1,30 @@
+<h3>
+    רשימת תורים
+</h3>
+<div class="table-responsive">
+    
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th style="text-align:right">#</th>
+                <th style="text-align:right">שם הפצינט</th>
+                <th style="text-align:right">שם השרות</th>
+                <th style="text-align:right">האם שולם</th>    
+                <th style="text-align:right">תאריך</th>    
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="m in items">
+                <td>{{m.no}}</td>
+                <td><a ng-href="#/users/{{m.patientId}}">{{m.patientName}}</a></td>
 
-        <div>{{name}}</div>
+                <!--<td>{{m.patientName}}</td>-->
+                <td>{{m.serviceName}}</td>
+                <td>{{m.isPaid}}</td>
+                <td>{{m.date| date:'medium'}}</td>
+
+            </tr>
+
+        </tbody>
+    </table>
+</div>

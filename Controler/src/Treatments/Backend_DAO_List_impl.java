@@ -6,15 +6,8 @@
 package Treatments;
 
 import Interface.Backend;
-import Treatments.Counseling;
-import Treatments.Meeting;
-import Treatments.Patient;
-import Treatments.Services;
-import Treatments.Treatment;
-import com.sun.org.apache.bcel.internal.generic.INSTANCEOF;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Vector;
 
 /**
  *
@@ -59,18 +52,31 @@ public class Backend_DAO_List_impl implements Backend {
         _metting = new ArrayList<Meeting>();
     }
 
+    /**
+     * add new patient
+     *
+     * @param p
+     * @throws Exception
+     */
     @Override
     public void AddPatiant(Patient p) throws Exception {
         _patient.add(p);
 
     }
 
+    /**
+     * add meeting
+     *
+     * @param m
+     * @throws Exception
+     */
     @Override
     public void AddMeeting(Meeting m) throws Exception {
         _metting.add(m);
     }
 
     /**
+     * delete patient
      *
      * @param p
      * @throws Exception
@@ -81,6 +87,7 @@ public class Backend_DAO_List_impl implements Backend {
     }
 
     /**
+     * delete meeting
      *
      * @param m
      * @throws Exception
@@ -91,6 +98,7 @@ public class Backend_DAO_List_impl implements Backend {
     }
 
     /**
+     * add service
      *
      * @param s
      * @throws Exception
@@ -101,6 +109,7 @@ public class Backend_DAO_List_impl implements Backend {
     }
 
     /**
+     * delete service
      *
      * @param s
      * @throws Exception
@@ -111,6 +120,7 @@ public class Backend_DAO_List_impl implements Backend {
     }
 
     /**
+     * get all patient
      *
      * @return @throws Exception
      */
@@ -120,6 +130,7 @@ public class Backend_DAO_List_impl implements Backend {
     }
 
     /**
+     * get all services
      *
      * @return @throws Exception
      */
@@ -129,6 +140,7 @@ public class Backend_DAO_List_impl implements Backend {
     }
 
     /**
+     * get all metting
      *
      * @return @throws Exception
      */
@@ -138,6 +150,7 @@ public class Backend_DAO_List_impl implements Backend {
     }
 
     /**
+     * get meeting for patient
      *
      * @param p
      * @return
@@ -155,6 +168,7 @@ public class Backend_DAO_List_impl implements Backend {
     }
 
     /**
+     * calc patient Unpaid metting
      *
      * @param p
      * @return
@@ -174,6 +188,7 @@ public class Backend_DAO_List_impl implements Backend {
     }
 
     /**
+     * calc patient paid meeting
      *
      * @param p
      * @return
@@ -194,6 +209,7 @@ public class Backend_DAO_List_impl implements Backend {
     }
 
     /**
+     * calc panient cost
      *
      * @param p
      * @return
@@ -205,6 +221,7 @@ public class Backend_DAO_List_impl implements Backend {
     }
 
     /**
+     * calc all cost for all patient
      *
      * @param meeting
      * @return
@@ -220,8 +237,14 @@ public class Backend_DAO_List_impl implements Backend {
         return ret;
     }
 
+    /**
+     * get all treatment types
+     *
+     * @return
+     * @throws Exception
+     */
     @Override
-    public ArrayList<String> treatmentType() throws Exception{
+    public ArrayList<String> treatmentType() throws Exception {
         ArrayList<String> v = new ArrayList<>();
 
         for (Object o : Treatments.Services.TypesTret.values()) {
@@ -230,8 +253,14 @@ public class Backend_DAO_List_impl implements Backend {
         return v;
     }
 
+    /**
+     * get all counseling types
+     *
+     * @return
+     * @throws Exception
+     */
     @Override
-    public ArrayList<String> counselingType() throws Exception{
+    public ArrayList<String> counselingType() throws Exception {
         ArrayList<String> v = new ArrayList<>();
         for (Object o : Treatments.Services.TypesCons.values()) {
             v.add(o.toString());

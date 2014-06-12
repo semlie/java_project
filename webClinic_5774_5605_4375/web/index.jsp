@@ -19,38 +19,11 @@
         <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/js/bootstrap.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.16/angular.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.16/angular-route.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.16/angular-resource.min.js"></script>
         <script src="js/myapp.js"></script>
         <link rel="stylesheet" href=" //cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/css/bootstrap-rtl.css">
         <link rel="stylesheet" href=" //cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/css/bootstrap.min.css">
 
-<%
-                        JSONObject ob = new JSONObject();
-                        JSONObject ob1 = new JSONObject();
-                    try {
-                        JSONArray g = new JSONArray();
-                        JSONSerializer s = new JSONSerializer();
-                        webservice.NewWebService_Service service = new webservice.NewWebService_Service();
-                        webservice.NewWebService port = service.getNewWebServicePort();
-                        // TODO process result here
-                        java.util.List<webservice.Meeting> result = port.getAllMeetings();
-                        out.println("Result = " + result);
-                        out.println("<br>");
-                        out.println("<br>");
-                        out.println("<br>");
-                        ArrayList a = new ArrayList();
-                        for (int i = 0; i < 10; i++) {
-                            ob.put("name" + i, i);
-                        }
-ob1.put("m", ob);
-
-                        session.setAttribute("meeting",ob1);
-                        String att = session.getAttribute("meeting").toString();
-                        out.println("s:" + session.getAttribute("meeting"));
-                    } catch (Exception ex) {
-                        // TODO handle custom exceptions here
-                    }
-                %>
-                <%-- end web service invocation --%><hr/>
 
         <title>JSP Page</title>
     </head>
@@ -73,7 +46,7 @@ ob1.put("m", ob);
                                 <li><a href="#service">services</a></li>
                                 <li><a href="#meeting">meeting</a></li>
                                 <li><a href="#users">users</a></li>
-                                <li><a href="#">Help</a></li>
+                                <li><a href="#help">Help</a></li>
                             </ul>
 
                         </div>
@@ -83,7 +56,7 @@ ob1.put("m", ob);
         </div>
         <div class="container">
             <div class="row">
-                <h1>Hello World!</h1>    <%-- start web service invocation --%><hr/>
+                <h2>קלינקה רפואה שלמה</h2>   <hr/>
                 
                 <div class="view-container">
                     <div ng-view class="view-frame"></div>

@@ -35,7 +35,7 @@ public class Meeting implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private Patient patient;
-    private Boolean payed;
+    private boolean payed;
     @Column(length = 3000)
     private Services service;
     @Temporal(javax.persistence.TemporalType.DATE)

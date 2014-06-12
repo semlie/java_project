@@ -28,10 +28,10 @@ public class GUIclinic {
 
     public static void init() throws Exception {
         toolsRandoData t = new toolsRandoData();
-//        Controler.changePatient(t.addListofPatient(100));
-//        Controler.changeServices(t.addListOfServices(30));
-//        Controler.changeMeeting(t.addListOfMeeting(Controler.GetAllPatient(), 30));
-//    Controler.changeServices(t.addListOfServices(Controler.GetAllPatient(), 7));
+      //  Controler.changePatient(t.addListofPatient(100));
+        //Controler.changeServices(t.addListOfServices(30));
+     //   Controler.changeMeeting(t.addListOfMeeting(Controler.GetAllPatient(), 30));
+ //   Controler.changeServices(t.addListOfServices(Controler.GetAllPatient(), 7));
     }
  
     /**

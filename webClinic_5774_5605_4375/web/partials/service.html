@@ -1,3 +1,44 @@
-
-        <div>{{name}}</div>
- 
+<h3>
+    רשימת שירותים בקליניקה
+</h3>
+<form>
+           
+</form>
+  <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                 <th style="text-align:right">#</th>
+                  <th style="text-align:right">ID</th>    
+                  <th style="text-align:right">שם המטפל</th>
+                  <th style="text-align:right">מתאים לבעיה</th>    
+                  <th style="text-align:right">מחיר</th>    
+                  <th style="text-align:right">סוג הטיפול</th>
+                  <th style="text-align:right">מחלקה</th>
+                </tr>
+              </thead>
+              <tbody>
+                  <tr >
+                  <td>{{m.no}}</td>
+                  <td>{{m.id}}</td>
+                  <td>   סינון לפי שם המטפל <input ng-model="FnameOf" type="text"></td>
+                  <td>{{m.problem}}</td>
+                  <td>{{m.price}}</td>
+                  <td>   סינון לפי סוג: <input ng-model="Ftype" type="text"></td>
+                  <td>   סינון לפי מחלקה <input ng-model="Fcat" type="text"></td>
+             
+                </tr>
+                  <tr ng-repeat="m in items|filter:{type:Ftype,cat:Fcat,nameOf:FnameOf}">
+                  <td>{{m.no}}</td>
+                  <td>{{m.id}}</td>
+                  <td>{{m.nameOf}}</td>
+                  <td>{{m.problem}}</td>
+                  <td>{{m.price}}</td>
+                  <td>{{m.type}}</td>
+                  <td>{{m.cat}}</td>
+             
+                </tr>
+              
+              </tbody>
+            </table>
+          </div>
